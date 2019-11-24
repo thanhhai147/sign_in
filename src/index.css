@@ -53,8 +53,6 @@ button{
     box-sizing: border-box;
     border-radius: 88px;
     height:56px;
-}
-input::placeholder{
     font-size: 20px;
     line-height: 24px;
     display: flex;
@@ -63,3 +61,11 @@ input::placeholder{
     text-transform: capitalize;
     color: #F2F2F2;
 }
+input::placeholder{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    color: #BDBDBD;
+}
+

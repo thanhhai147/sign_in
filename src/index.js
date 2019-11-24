@@ -1,6 +1,12 @@
 import {mxFirebase} from "./mx.js"
 import "./mx.css";
 import "./index.css";
+import riot from "riot";
+import './tags/homepage.tag';
+import "./tags/sign_in.tag";
+import route from "riot-route";
+route.base("/");
+var pathname = "http://localhost:8080/home";
 
 var firebaseConfig = {
     apiKey: "AIzaSyBOu6ytP1FNaQa4jxSjAGZfBpBy-dU1cxg",
@@ -14,18 +20,26 @@ var firebaseConfig = {
   };
 
 mxFirebase.init(firebaseConfig);
+const sign_in = riot.mount("div#root_sign_in","signin");
 
 
-document.getElementById("sign_in_task").addEventListener("submit", async (a)=>{
+document.getElementById("sign_in_task").addEventListener("submit", async (a) => {
     a.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     try{
         await mxFirebase.signIn(email,password);
         console.log("login success");
+        window.location.pathname;
+        route("/home", () =>{
+            const homepage = riot.mount("div#root_homepage", "homepage");
+        });     
+        route.start(true);
     } catch(err){
         var annoucement = err.message;
         alert(annoucement);
     }
    
-})
+});
+
+

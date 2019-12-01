@@ -7,6 +7,7 @@ import "./tags/sign_in.tag";
 import route from "riot-route";
 route.base("/");
 var pathname = "http://localhost:8080/home";
+var pathname_2 = "http://localhost:8080/signin";
 
 var firebaseConfig = {
     apiKey: "AIzaSyBOu6ytP1FNaQa4jxSjAGZfBpBy-dU1cxg",
@@ -20,7 +21,15 @@ var firebaseConfig = {
   };
 
 mxFirebase.init(firebaseConfig);
-const sign_in = riot.mount("div#root_sign_in","signin");
+
+route.start(true);
+var sign_in_load = document.getElementsByTagName("body").addEventListener("load", function() {
+    window.location.pathname_2;
+    route("/signin", () => {
+        const sign_in = riot.mount("div#root_sign_in","sign_in");
+    });
+});
+
 
 
 document.getElementById("sign_in_task").addEventListener("submit", async (a) => {
